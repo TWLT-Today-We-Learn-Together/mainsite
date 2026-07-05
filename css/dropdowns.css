@@ -1,0 +1,71 @@
+/* dropdowns.css - Navigation dropdown styles */
+
+/* Dropdown container */
+.nav-item {
+    position: relative;
+}
+
+/* Dropdown toggle - items with dropdowns */
+.nav-item > a::after {
+    content: ' ▾';
+    font-size: 0.7em;
+    opacity: 0.7;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background: var(--bg-secondary);
+    border-radius: 4px;
+    box-shadow: 0 4px 16px var(--shadow-color);
+    z-index: 1000;
+    list-style: none;
+    padding: 0.5rem 0;
+    margin: 0;
+}
+
+/* Show dropdown on hover/focus */
+.nav-item:hover > .dropdown-menu,
+.nav-item:focus-within > .dropdown-menu {
+    display: block;
+}
+
+/* Dropdown items */
+.dropdown-menu li a {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.dropdown-menu li a:hover {
+    background: var(--bg-primary);
+    color: var(--accent-primary);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        background: var(--bg-primary);
+        padding-left: 1rem;
+    }
+
+    .nav-item > a::after {
+        content: ' +';
+    }
+
+    .nav-item.open > a::after {
+        content: ' −';
+    }
+
+    .nav-item.open > .dropdown-menu {
+        display: block;
+    }
+}

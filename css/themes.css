@@ -1,0 +1,37 @@
+/* themes.css */
+:root {
+    /* Hybrid Scroll (default for light mode) */
+    --bg-primary: #f5f0e6;
+    --bg-secondary: #e8dcc8;
+    --accent-primary: #c9a84c;
+    --accent-secondary: #b8860b;
+    --text-primary: #3d3225;
+    --text-secondary: #5a4a3a;
+    --border-color: #d4c4a8;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    /* Dark Fantasy */
+    --bg-primary: #0f0f23;
+    --bg-secondary: #1a1a2e;
+    --accent-primary: #9b59b6;
+    --accent-secondary: #8e44ad;
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --border-color: #3a3a5c;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg-primary: #0f0f23;
+        --bg-secondary: #1a1a2e;
+        --accent-primary: #9b59b6;
+        --accent-secondary: #8e44ad;
+        --text-primary: #e0e0e0;
+        --text-secondary: #b0b0b0;
+        --border-color: #3a3a5c;
+        --shadow-color: rgba(0, 0, 0, 0.3);
+    }
+}

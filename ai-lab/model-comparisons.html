@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Model Comparisons - Live benchmark data pulled from Google Sheets for AI model testing.">
+    <meta property="og:title" content="Model Comparisons | AI Lab | Today We Learn Together">
+    <meta property="og:description" content="Live benchmark data pulled from Google Sheets for AI model testing.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://petalscroll-studios.github.io/twlt/ai-lab/model-comparisons.html">
+    <meta property="og:image" content="https://petalscroll-studios.github.io/twlt/assets/images/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Model Comparisons | AI Lab | Today We Learn Together">
+    <meta name="twitter:description" content="Live benchmark data pulled from Google Sheets for AI model testing.">
+    <meta name="twitter:image" content="https://petalscroll-studios.github.io/twlt/assets/images/og-image.jpg">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <title>Model Comparisons | AI Lab | Today We Learn Together</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/themes.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/dropdowns.css">
+    <link rel="stylesheet" href="../css/site.css">
+    <style>
+        /* --- Methodology Banner --- */
+        .methodology-callout {
+            margin-bottom: 2rem;
+            padding: 15px 20px;
+            background-color: #f4f8fa;
+            border-left: 5px solid #007bff;
+            border-radius: 4px;
+            color: #333;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .methodology-callout p { margin: 0; }
+        .methodology-callout a {
+            color: #007bff;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .methodology-callout a:hover { text-decoration: underline; }
+
+        /* --- Tab Navigation --- */
+        .tab-container { margin-bottom: 2rem; }
+        .tab-buttons {
+            display: flex;
+            border-bottom: 2px solid #ccc;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #555;
+            transition: 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+        .tab-btn:hover { color: #000; }
+        .tab-btn.active {
+            color: #007bff;
+            border-bottom: 3px solid #007bff;
+        }
+        .tab-content {
+            display: none;
+            padding-top: 15px;
+            animation: fadeEffect 0.5s;
+        }
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        /* --- SPREADSHEET CONTAINER (Fixes the missing scrollbar issue) --- */
+        .table-window {
+            max-height: 70vh; /* Keeps the table from taking up the whole page, forces scrollbars into view */
+            overflow: auto;   /* Enables both horizontal and vertical scrolling inside this box */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff; /* Prevents transparent background bugs */
+        }
+
+        /* --- Data Tables --- */
+        .benchmark-table {
+            width: 100%;
+            border-collapse: separate; /* Changed from 'collapse' to 'separate' to make sticky borders work cleanly */
+            border-spacing: 0;
+            table-layout: auto;
+        }
+        .benchmark-table th, .benchmark-table td {
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+            min-width: 120px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            background-color: inherit; /* Inherits background so sticky cells don't become transparent */
+        }
+
+        /* --- STICKY HEADERS (Fixes the lost context issue) --- */
+        /* Top Row (Column Names) */
+        .benchmark-table th {
+            position: sticky;
+            top: 0;
+            background-color: #f4f4f4; /* Solid background is MANDATORY so text doesn't bleed through */
+            color: #333;
+            white-space: nowrap;
+            z-index: 2; /* Keeps headers above regular scrolling rows */
+            box-shadow: 0 2px 2px -1px rgba(0,0,0,0.2); /* Adds a subtle drop shadow to define the scrolling edge */
+        }
+
+        /* First Column (Model Names) */
+        .benchmark-table td:first-child,
+        .benchmark-table th:first-child {
+            position: sticky;
+            left: 0;
+            background-color: #f4f4f4; /* Solid background */
+            font-weight: bold; /* Helps the model name stand out */
+            z-index: 1; /* Keeps left column above regular columns */
+            box-shadow: 2px 0 2px -1px rgba(0,0,0,0.2);
+        }
+
+        /* The Top-Left Corner (Intersection of top row and first column) */
+        .benchmark-table th:first-child {
+            z-index: 3; /* Must be the highest z-index so it sits on top of everything */
+        }
+
+        /* --- Scrollable Cells --- */
+        .scroll-cell {
+            max-height: 120px;
+            overflow-y: auto;
+            white-space: pre-line;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin: 0;
+            padding-right: 5px;
+        }
+        .copy-btn {
+            margin-top: 6px;
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #f4f4f4;
+            color: #333;
+            transition: background 0.2s;
+        }
+        .copy-btn:hover {
+            background: #e0e0e0;
+        }
+
+        /* --- Dark Mode Adjustments --- */
+        @media (prefers-color-scheme: dark) {
+            .methodology-callout {
+                background-color: #1e2428;
+                border-left-color: #4da3ff;
+                color: #ddd;
+            }
+            .methodology-callout a { color: #4da3ff; }
+
+            .tab-buttons { border-bottom: 2px solid #444; }
+            .tab-btn { color: #aaa; }
+            .tab-btn:hover { color: #fff; }
+            .tab-btn.active {
+                color: #4da3ff;
+                border-bottom: 3px solid #4da3ff;
+            }
+
+            .table-window {
+                border-color: #444;
+                background-color: #1a1a1a;
+            }
+            .benchmark-table th, .benchmark-table td { border-right-color: #444; border-bottom-color: #444; }
+
+            /* Dark mode sticky backgrounds */
+            .benchmark-table th,
+            .benchmark-table td:first-child,
+            .benchmark-table th:first-child {
+                background-color: #222;
+                color: #fff;
+            }
+
+            .copy-btn { background: #333; color: #ddd; border-color: #555; }
+            .copy-btn:hover { background: #444; }
+        }
+    </style>
+</head>
+<body>
+        <header>
+        <nav class="navbar">
+            <a href="../index.html" class="logo"><img src="../TWLT_emblem.png" alt="" class="nav-emblem"> Today We Learn Together</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li class="nav-item">
+                    <a>AI Enthusiasts</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../ai-lab.html">AI Lab</a></li>
+                        <li><a href="../ai-lab/model-comparisons.html">Model Comparisons</a></li>
+                        <li><a href="../ai-lab/standard-ai-evals.html">Standard AI Evals</a></li>
+                        <li><a href="../ai-lab/testing-methodology.html">Testing Methodology</a></li>
+                        <li><a href="../ai-lab/tools.html">Tools</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a>Resources</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../resources/yt-walkthroughs.html">YT vid walkthroughs</a></li>
+                        <li><a href="../resources/guides.html">Guides w/o vids</a></li>
+                        <li><a href="../resources/downloads.html">Downloads</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://www.youtube.com/@TWLT-LocalAIEdition" target="_blank" rel="noopener">TWLT on Social Media</a></li>
+                <li class="nav-item">
+                    <a>Related Sites</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://petalscroll-studios.github.io/richard-sees/index.html">Richard Sees</a></li>
+                        <li><a href="https://petalscroll-studios.github.io/petalscroll-studios/index.html">Petalscroll Studios (CC's)</a></li>
+                        <li><a href="other-content-creators.html">Other Content Creators</a></li>
+                    </ul>
+                </li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Model Comparisons</h1>
+                <p>Live benchmark data updated from Google Sheets</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="methodology-callout">
+                    <p>
+                        📊 <strong>Benchmark Context:</strong> All models are tested using identical prompts and local hardware settings unless otherwise noted.
+                        For specific column definitions, parameters, and hardware specs, please review our
+                        <a href="testing-methodology.html">Full Testing Methodology</a>.
+                    </p>
+                </div>
+
+                <div class="tab-container">
+                    <div class="tab-buttons" id="dynamic-tab-buttons"></div>
+                    <div id="dynamic-tab-content"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+        <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../TWLT_emblem.png" alt="TWLT emblem" class="footer-emblem">
+                    <div class="footer-info">
+                        <h3 class="footer-title">Today We Learn Together</h3>
+                        <p class="footer-description">Local AI benchmarks, tutorials, workflows, and practical experimentation.</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a href="#">GitHub</a>
+                    <a href="../contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TWLT. Built for local AI enthusiasts</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/theme.js"></script>
+    <script src="../js/nav.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script>
+        // --- Configuration ---
+        const benchmarkTabs = [
+            { id: 'tab-1', name: 'Overview',              url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQBLZIJPYNytp-jLWo-jgdO14Ih2mwM4NoC7e2WSV5qpXlO5EhJe7AfI1oaY701iJuoJWF7-Qud_OSL/pub?gid=0&single=true&output=csv' },
+            { id: 'tab-2', name: 'Model Library',         url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQBLZIJPYNytp-jLWo-jgdO14Ih2mwM4NoC7e2WSV5qpXlO5EhJe7AfI1oaY701iJuoJWF7-Qud_OSL/pub?gid=413637993&single=true&output=csv' },
+            { id: 'tab-3', name: 'Writing & Reasoning',   url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQBLZIJPYNytp-jLWo-jgdO14Ih2mwM4NoC7e2WSV5qpXlO5EhJe7AfI1oaY701iJuoJWF7-Qud_OSL/pub?gid=943818819&single=true&output=csv' },
+            { id: 'tab-4', name: 'Stability Tests',       url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQBLZIJPYNytp-jLWo-jgdO14Ih2mwM4NoC7e2WSV5qpXlO5EhJe7AfI1oaY701iJuoJWF7-Qud_OSL/pub?gid=274494934&single=true&output=csv' },
+            { id: 'tab-5', name: '8K Roblox-portal',      url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQBLZIJPYNytp-jLWo-jgdO14Ih2mwM4NoC7e2WSV5qpXlO5EhJe7AfI1oaY701iJuoJWF7-Qud_OSL/pub?gid=209729008&single=true&output=csv' }
+        ];
+
+        const btnContainer = document.getElementById('dynamic-tab-buttons');
+        const contentContainer = document.getElementById('dynamic-tab-content');
+
+        function fetchAndParseCSV(url) {
+            return fetch(url)
+                .then(response => response.text())
+                .then(csvText => {
+                    return new Promise(resolve => {
+                        Papa.parse(csvText, {
+                            header: true,
+                            skipEmptyLines: true,
+                            complete: results => resolve(results.data)
+                        });
+                    });
+                });
+        }
+
+        let noteCounter = 0;
+        function buildTableHTML(data) {
+            if (data.length === 0) return "<p>No data found.</p>";
+            const headers = Object.keys(data[0]);
+
+            // Changed the wrapper div to use our new 'table-window' class
+            let html = '<div class="table-window"><table class="benchmark-table"><thead><tr>';
+            headers.forEach(header => { html += `<th>${header}</th>`; });
+            html += '</tr></thead><tbody>';
+            data.forEach(row => {
+                html += '<tr>';
+                headers.forEach(header => {
+                    const val = row[header] || '';
+                    const id = `note-${noteCounter++}`;
+                    if (val.length > 60) {
+                        html += `<td style="min-width: 300px;"><div class="scroll-cell" id="${id}">${val}</div><button class="copy-btn" onclick="copyNote('${id}')">Copy</button></td>`;
+                    } else {
+                        html += `<td>${val}</td>`;
+                    }
+                });
+                html += '</tr>';
+            });
+            html += '</tbody></table></div>';
+            return html;
+        }
+
+        window.switchTab = function(evt, tabId) {
+            document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).style.display = 'block';
+            evt.currentTarget.classList.add('active');
+            noteCounter = 0;
+        };
+
+        window.copyNote = function(elementId) {
+            var textToCopy = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                var btn = document.getElementById(elementId).nextElementSibling;
+                btn.textContent = 'Copied!';
+                setTimeout(() => { btn.textContent = 'Copy'; }, 1500);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        };
+
+        // --- Build UI ---
+        benchmarkTabs.forEach((tabConfig, index) => {
+            const btn = document.createElement('button');
+            btn.className = `tab-btn ${index === 0 ? 'active' : ''}`;
+            btn.innerText = tabConfig.name;
+            btn.onclick = (e) => switchTab(e, tabConfig.id);
+            btnContainer.appendChild(btn);
+
+            const contentDiv = document.createElement('div');
+            contentDiv.id = tabConfig.id;
+            contentDiv.className = 'tab-content';
+            contentDiv.style.display = index === 0 ? 'block' : 'none';
+            contentDiv.innerHTML = '<p>Loading data...</p>';
+            contentContainer.appendChild(contentDiv);
+
+            fetchAndParseCSV(tabConfig.url)
+                .then(data => { contentDiv.innerHTML = buildTableHTML(data); })
+                .catch(error => {
+                    console.error(`Error loading ${tabConfig.name}:`, error);
+                    contentDiv.innerHTML = `<p>Error loading ${tabConfig.name} data.</p>`;
+                });
+        });
+    </script>
+</body>
+</html>

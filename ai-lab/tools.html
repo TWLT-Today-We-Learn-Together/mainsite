@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Tools - Tools I use (or have used) daily for local AI experimentation and development.">
+    <meta property="og:title" content="Tools | AI Lab | Today We Learn Together">
+    <meta property="og:description" content="Tools I use (or have used) daily for local AI experimentation and development.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://petalscroll-studios.github.io/twlt/ai-lab/tools.html">
+    <meta property="og:image" content="https://petalscroll-studios.github.io/twlt/assets/images/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tools | AI Lab | Today We Learn Together">
+    <meta name="twitter:description" content="Tools I use (or have used) daily for local AI experimentation and development.">
+    <meta name="twitter:image" content="https://petalscroll-studios.github.io/twlt/assets/images/og-image.jpg">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <title>Tools | AI Lab | Today We Learn Together</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/themes.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/dropdowns.css">
+    <link rel="stylesheet" href="../css/site.css">
+    <style>
+        .tool-card {
+            border-left: 4px solid var(--accent-primary);
+            margin-bottom: 1.5rem;
+        }
+        .tool-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .tool-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+        .tool-link:hover {
+            text-decoration: underline;
+        }
+        .tools-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+        }
+        @media (max-width: 900px) {
+            .tools-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+        .tools-columns h2 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-primary);
+        }
+    </style>
+</head>
+<body>
+        <header>
+        <nav class="navbar">
+            <a href="../index.html" class="logo"><img src="../TWLT_emblem.png" alt="" class="nav-emblem"> Today We Learn Together</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li class="nav-item">
+                    <a>AI Enthusiasts</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../ai-lab.html">AI Lab</a></li>
+                        <li><a href="../ai-lab/model-comparisons.html">Model Comparisons</a></li>
+                        <li><a href="../ai-lab/standard-ai-evals.html">Standard AI Evals</a></li>
+                        <li><a href="../ai-lab/testing-methodology.html">Testing Methodology</a></li>
+                        <li><a href="../ai-lab/tools.html">Tools</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a>Resources</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../resources/yt-walkthroughs.html">YT vid walkthroughs</a></li>
+                        <li><a href="../resources/guides.html">Guides w/o vids</a></li>
+                        <li><a href="../resources/downloads.html">Downloads</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://www.youtube.com/@TWLT-LocalAIEdition" target="_blank" rel="noopener">TWLT on Social Media</a></li>
+                <li class="nav-item">
+                    <a>Related Sites</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://petalscroll-studios.github.io/richard-sees/index.html">Richard Sees</a></li>
+                        <li><a href="https://petalscroll-studios.github.io/petalscroll-studios/index.html">Petalscroll Studios (CC's)</a></li>
+                        <li><a href="other-content-creators.html">Other Content Creators</a></li>
+                    </ul>
+                </li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>AI Tools</h1>
+                <p>Tools I use (or have used) daily for local AI experimentation and development</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="tools-columns">
+
+                    <!-- Column 1: Cloud Models -->
+                    <div>
+                        <h2>☁️ Cloud Models</h2>
+
+                        <div class="card tool-card">
+                            <h3>✨ Gemini</h3>
+                            <p><strong>Purpose:</strong> General assistant, multimodal tasks</p>
+                            <p>Google's AI model with strong multimodal capabilities. Good for general tasks, image understanding, and long context windows.</p>
+                            <p><strong>Why I use it:</strong> Free tier available, good for quick questions and image analysis.</p>
+                            <a href="https://gemini.google.com/" target="_blank" rel="noopener" class="tool-link">Visit Gemini →</a>
+                        </div>
+
+                        <div class="card tool-card">
+                            <h3>💬 ChatGPT</h3>
+                            <p><strong>Purpose:</strong> General assistant, code generation</p>
+                            <p>OpenAI's conversational AI. Widely used for general tasks, coding, writing, and brainstorming.</p>
+                            <p><strong>Why I use it:</strong> Good baseline for comparison, strong coding capabilities.</p>
+                            <a href="https://chat.openai.com/" target="_blank" rel="noopener" class="tool-link">Visit ChatGPT →</a>
+                        </div>
+
+                        <div class="card tool-card">
+                            <h3>🧠 Claude</h3>
+                            <p><strong>Purpose:</strong> Long context, nuanced reasoning</p>
+                            <p>Anthropic's AI model known for helpful, harmless, and honest responses. Excellent at long-form content and nuanced analysis.</p>
+                            <p><strong>Why I use it:</strong> Strong reasoning, good at following complex instructions.</p>
+                            <a href="https://claude.ai/" target="_blank" rel="noopener" class="tool-link">Visit Claude →</a>
+                        </div>
+
+                        <div class="card tool-card">
+                            <h3>🔍 DeepSeek</h3>
+                            <p><strong>Purpose:</strong> Code generation, reasoning</p>
+                            <p>Chinese AI lab with strong open-source models. Known for efficient training and good coding capabilities.</p>
+                            <p><strong>Why I use it:</strong> Competitive performance, good for code tasks.</p>
+                            <a href="https://chat.deepseek.com/" target="_blank" rel="noopener" class="tool-link">Visit DeepSeek →</a>
+                        </div>
+
+                        <div class="card tool-card">
+                            <h3>🌙 Kimi</h3>
+                            <p><strong>Purpose:</strong> Long context, document analysis</p>
+                            <p>Moonshot AI's model with very long context windows. Good for analyzing large documents and multi-turn conversations.</p>
+                            <p><strong>Why I use it:</strong> Handles long contexts well, good for document analysis.</p>
+                            <a href="https://kimi.moonshot.cn/" target="_blank" rel="noopener" class="tool-link">Visit Kimi →</a>
+                        </div>
+
+                        <div class="card tool-card">
+                            <h3>🔎 Perplexity</h3>
+                            <p><strong>Purpose:</strong> Search-augmented answers</p>
+                            <p>AI-powered search engine that provides cited answers. Good for research and finding current information.</p>
+                            <p><strong>Why I use it:</strong> Great for research, provides sources for answers.</p>
+                            <a href="https://www.perplexity.ai/" target="_blank" rel="noopener" class="tool-link">Visit Perplexity →</a>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Agent Workspaces -->
+                    <div>
+                        <h2>🤖 Agent Workspaces</h2>
+
+                        <div class="card tool-card">
+                            <h3>🦙 Llama.cpp</h3>
+                            <p><strong>Purpose:</strong> Local LLM inference engine</p>
+                            <p>C/C++ based LLM inference engine. The foundational runtime that powers many local AI tools.</p>
+                            <p><strong>Why I use it:</strong> Exposes all llama.cpp features as soon as they release vs awaiting often later release for a wrapper in tools such as Ollama and LM Studio.</p>
+                            <a href="https://github.com/ggerganov/llama.cpp" target="_blank" rel="noopener" class="tool-link">Visit Llama.cpp →</a>
+                        </div>
+
+                        <div class="card tool-card">
+                            <h3>🔄 Llama-swap</h3>
+                            <p><strong>Purpose:</strong> Model swapping and management</p>
+                            <p>Tool for quickly swapping between different LLM models without reloading from scratch.</p>
+                            <p><strong>Why I use it:</strong> Lets me switch between models seamlessly during testing and comparison workflows.</p>
+                            <a href="https://github.com/nicholasgasior/llama-swap" target="_blank" rel="noopener" class="tool-link">Visit Llama-swap →</a>
+                        </div>
+
+                        <div class="card tool-card">
+                            <h3>🤖 MiMoCode</h3>
+                            <p><strong>Purpose:</strong> AI-assisted development</p>
+                            <p>Interactive CLI tool for software engineering tasks. Helps with code editing, debugging, and project navigation.</p>
+                            <p><strong>Why I use it:</strong> Fast, understands context well, works with local models.</p>
+                            <a href="https://github.com/XiaomiMiMo/MiMo-Code" target="_blank" rel="noopener" class="tool-link">Visit MiMoCode →</a>
+                        </div>
+
+                        <div class="card tool-card">
+                            <h3>🔧 Nanobot</h3>
+                            <p><strong>Purpose:</strong> Lightweight AI agent framework</p>
+                            <p>Minimal agent framework for running AI-powered tasks locally.</p>
+                            <p><strong>Why I use it:</strong> Simple setup for quick agent experiments.</p>
+                            <a href="https://github.com/nicholasgasior/nanobot" target="_blank" rel="noopener" class="tool-link">Visit Nanobot →</a>
+                        </div>
+
+                        <div class="card tool-card">
+                            <h3>⚙️ Picoclaw</h3>
+                            <p><strong>Purpose:</strong> Micro agent tooling</p>
+                            <p>Small-scale agent utilities for local AI workflows.</p>
+                            <p><strong>Why I use it:</strong> Useful for lightweight automation tasks.</p>
+                        </div>
+
+                        <div class="card tool-card">
+                            <h3>🔩 Moltis</h3>
+                            <p><strong>Purpose:</strong> AI workflow orchestration</p>
+                            <p>Tool for orchestrating multi-step AI workflows locally.</p>
+                            <p><strong>Why I use it:</strong> Helps chain together model calls for complex tasks.</p>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Utilities & Creative Tools -->
+                    <div>
+                        <h2>🛠️ Utilities & Creative Tools</h2>
+
+                        <div class="card tool-card">
+                            <h3>📓 Obsidian</h3>
+                            <p><strong>Purpose:</strong> Knowledge management and notes</p>
+                            <p>Markdown-based note-taking app with linking capabilities. Used for documenting AI experiments and maintaining a personal knowledge base.</p>
+                            <p><strong>Why I use it:</strong> Great for organizing research notes and linking concepts across experiments.</p>
+                            <a href="https://obsidian.md/" target="_blank" rel="noopener" class="tool-link">Visit Obsidian →</a>
+                        </div>
+
+                        <div class="card tool-card">
+                            <h3>🦙 Unsloth Studio</h3>
+                            <p><strong>Purpose:</strong> Model fine-tuning</p>
+                            <p>Tool for fine-tuning models on custom data. Used for experimenting with model customization.</p>
+                            <p><strong>Why I use it:</strong> Makes fine-tuning accessible on consumer hardware.</p>
+                            <a href="https://unsloth.ai/" target="_blank" rel="noopener" class="tool-link">Visit Unsloth →</a>
+                        </div>
+
+                        <div class="card tool-card">
+                            <h3>🎨 Meshy</h3>
+                            <p><strong>Purpose:</strong> 3D asset generation</p>
+                            <p>AI-powered 3D model generation for game development assets.</p>
+                            <p><strong>Why I use it:</strong> Quick prototyping of game assets.</p>
+                            <a href="https://www.meshy.ai/" target="_blank" rel="noopener" class="tool-link">Visit Meshy →</a>
+                        </div>
+
+                        <div class="card tool-card">
+                            <h3>🧊 Blender</h3>
+                            <p><strong>Purpose:</strong> 3D modeling and editing</p>
+                            <p>Professional 3D creation suite for editing and refining game assets.</p>
+                            <p><strong>Why I use it:</strong> Industry standard, free, powerful.</p>
+                            <a href="https://www.blender.org/" target="_blank" rel="noopener" class="tool-link">Visit Blender →</a>
+                        </div>
+
+                        <div class="card tool-card">
+                            <h3>🌐 Browsers: Brave Origin & Falkon</h3>
+                            <p><strong>Purpose:</strong> Web browsing and research</p>
+                            <p>Brave Origin for privacy-focused browsing; Falkon for lightweight fast browsing on Linux.</p>
+                            <p><strong>Why I use them:</strong> Brave for general use, Falkon for speed on lighter systems.</p>
+                            <a href="https://brave.com/" target="_blank" rel="noopener" class="tool-link">Visit Brave →</a>
+                        </div>
+
+                        <div class="card tool-card">
+                            <h3>📝 Kate</h3>
+                            <p><strong>Purpose:</strong> Text and code editing</p>
+                            <p>KDE's advanced text editor with syntax highlighting and multi-document support.</p>
+                            <p><strong>Why I use it:</strong> Fast, lightweight, great for quick edits and code review.</p>
+                            <a href="https://kate-editor.org/" target="_blank" rel="noopener" class="tool-link">Visit Kate →</a>
+                        </div>
+
+                        <div class="card tool-card">
+                            <h3>📄 OnlyOffice & LibreOffice</h3>
+                            <p><strong>Purpose:</strong> Document and spreadsheet editing</p>
+                            <p>Office suites for handling documents, spreadsheets, and presentations.</p>
+                            <p><strong>Why I use them:</strong> Free alternatives to Microsoft Office for professional documents.</p>
+                            <a href="https://www.onlyoffice.com/" target="_blank" rel="noopener" class="tool-link">Visit OnlyOffice →</a>
+                        </div>
+
+                        <div class="card tool-card">
+                            <h3>👻 Ghostty</h3>
+                            <p><strong>Purpose:</strong> Terminal emulator</p>
+                            <p>Fast, feature-rich terminal emulator for running local AI tools and development workflows.</p>
+                            <p><strong>Why I use it:</strong> Blazing fast, GPU-accelerated, clean interface.</p>
+                            <a href="https://github.com/ghostty-org/ghostty" target="_blank" rel="noopener" class="tool-link">Visit Ghostty →</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+        <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../TWLT_emblem.png" alt="TWLT emblem" class="footer-emblem">
+                    <div class="footer-info">
+                        <h3 class="footer-title">Today We Learn Together</h3>
+                        <p class="footer-description">Local AI benchmarks, tutorials, workflows, and practical experimentation.</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a href="#">GitHub</a>
+                    <a href="../contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TWLT. Built for local AI enthusiasts</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/theme.js"></script>
+    <script src="../js/nav.js"></script>
+</body>
+</html>

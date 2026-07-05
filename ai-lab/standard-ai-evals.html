@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Standard AI Evaluations - Links to industry benchmarks and leaderboards for AI model evaluation.">
+    <meta property="og:title" content="Standard AI Evals | AI Lab | Today We Learn Together">
+    <meta property="og:description" content="Links to industry benchmarks and leaderboards for AI model evaluation.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://petalscroll-studios.github.io/twlt/ai-lab/standard-ai-evals.html">
+    <meta property="og:image" content="https://petalscroll-studios.github.io/twlt/assets/images/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Standard AI Evals | AI Lab | Today We Learn Together">
+    <meta name="twitter:description" content="Links to industry benchmarks and leaderboards for AI model evaluation.">
+    <meta name="twitter:image" content="https://petalscroll-studios.github.io/twlt/assets/images/og-image.jpg">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <title>Standard AI Evals | AI Lab | Today We Learn Together</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/themes.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/dropdowns.css">
+    <link rel="stylesheet" href="../css/site.css">
+    <style>
+        .external-links {
+            list-style: none;
+            padding: 0;
+        }
+        .external-links li {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .external-links a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .external-links a:hover {
+            text-decoration: underline;
+        }
+        .external-links .link-desc {
+            display: block;
+            margin-top: 0.25rem;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+        <header>
+        <nav class="navbar">
+            <a href="../index.html" class="logo"><img src="../TWLT_emblem.png" alt="" class="nav-emblem"> Today We Learn Together</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li class="nav-item">
+                    <a>AI Enthusiasts</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../ai-lab.html">AI Lab</a></li>
+                        <li><a href="../ai-lab/model-comparisons.html">Model Comparisons</a></li>
+                        <li><a href="../ai-lab/standard-ai-evals.html">Standard AI Evals</a></li>
+                        <li><a href="../ai-lab/testing-methodology.html">Testing Methodology</a></li>
+                        <li><a href="../ai-lab/tools.html">Tools</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a>Resources</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../resources/yt-walkthroughs.html">YT vid walkthroughs</a></li>
+                        <li><a href="../resources/guides.html">Guides w/o vids</a></li>
+                        <li><a href="../resources/downloads.html">Downloads</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://www.youtube.com/@TWLT-LocalAIEdition" target="_blank" rel="noopener">TWLT on Social Media</a></li>
+                <li class="nav-item">
+                    <a>Related Sites</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://petalscroll-studios.github.io/richard-sees/index.html">Richard Sees</a></li>
+                        <li><a href="https://petalscroll-studios.github.io/petalscroll-studios/index.html">Petalscroll Studios (CC's)</a></li>
+                        <li><a href="other-content-creators.html">Other Content Creators</a></li>
+                    </ul>
+                </li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Standard AI Evaluations</h1>
+                <p>Industry benchmarks and leaderboards for AI model evaluation</p>
+            </div>
+        </section>
+
+        <section class="section" style="background-color: var(--bg-secondary);">
+            <div class="container">
+                <p style="max-width: 800px; margin: 0 auto 2rem; text-align: center;">
+                    <strong>Important:</strong> Benchmarks are useful, but they are not a replacement for testing your actual workflow.
+                </p>
+
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>General LLM Benchmarks</h3>
+                        <ul class="external-links">
+                            <li>
+                                <a href="https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard" target="_blank" rel="noopener">HuggingFace Open LLM Leaderboard</a>
+                                <span class="link-desc">Community leaderboard for open models</span>
+                            </li>
+                            <li>
+                                <a href="https://github.com/hendrycks/test" target="_blank" rel="noopener">MMLU</a>
+                                <span class="link-desc">Massive Multitask Language Understanding</span>
+                            </li>
+                            <li>
+                                <a href="https://arxiv.org/abs/2103.03874" target="_blank" rel="noopener">ARC (AI2 Reasoning Challenge)</a>
+                                <span class="link-desc">Science reasoning questions</span>
+                            </li>
+                            <li>
+                                <a href="https://github.com/openai/grade-school-math" target="_blank" rel="noopener">GSM8K</a>
+                                <span class="link-desc">Grade school math problems</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Coding Benchmarks</h3>
+                        <ul class="external-links">
+                            <li>
+                                <a href="https://github.com/openai/human-eval" target="_blank" rel="noopener">HumanEval</a>
+                                <span class="link-desc">Code generation benchmark</span>
+                            </li>
+                            <li>
+                                <a href="https://github.com/google-research/google-research/tree/master/mbpp" target="_blank" rel="noopener">MBPP</a>
+                                <span class="link-desc">Mostly Basic Python Problems</span>
+                            </li>
+                            <li>
+                                <a href="https://www.swebench.com/" target="_blank" rel="noopener">SWE-bench</a>
+                                <span class="link-desc">Real GitHub issue resolution</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid-2" style="margin-top: 2rem;">
+                    <div class="card">
+                        <h3>Reasoning</h3>
+                        <ul class="external-links">
+                            <li>
+                                <a href="https://github.com/idavidrein/gpqa" target="_blank" rel="noopener">GPQA</a>
+                                <span class="link-desc">Graduate-level science questions</span>
+                            </li>
+                            <li>
+                                <a href="https://github.com/hendrycks/math" target="_blank" rel="noopener">MATH</a>
+                                <span class="link-desc">Competition mathematics</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Agent & Tool Use</h3>
+                        <ul class="external-links">
+                            <li>
+                                <a href="https://gorilla.cs.berkeley.edu/leaderboard.html" target="_blank" rel="noopener">Berkeley Function Calling Leaderboard</a>
+                                <span class="link-desc">Tool use and function calling</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+        <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../TWLT_emblem.png" alt="TWLT emblem" class="footer-emblem">
+                    <div class="footer-info">
+                        <h3 class="footer-title">Today We Learn Together</h3>
+                        <p class="footer-description">Local AI benchmarks, tutorials, workflows, and practical experimentation.</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a href="#">GitHub</a>
+                    <a href="../contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TWLT. Built for local AI enthusiasts</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/theme.js"></script>
+    <script src="../js/nav.js"></script>
+</body>
+</html>
