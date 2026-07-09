@@ -179,3 +179,11 @@ footer {
     h1 { font-size: 2rem; }
     h2 { font-size: 1.5rem; }
 }
+
+/* Keyboard focus visibility (2026-07-09 polish pass — this file is
+   shared: keep byte-identical across all three sites) */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}

@@ -17,8 +17,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-emblem {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    object-fit: cover;
+    /* The TWLT emblem is a wide banner (~16:9): a circular crop
+       shows only an unreadable center sliver. Show the full wordmark
+       at nav height with softened corners instead. */
+    width: auto;
+    height: 44px;
+    max-width: 88px;
+    border-radius: 6px;
+    object-fit: contain;
+}
+
+/* Same banner-shape problem in the footer: override the shared
+   48px circle (components.css) with a full-width treatment. */
+.footer-emblem {
+    width: auto;
+    height: 48px;
+    border-radius: 6px;
+    object-fit: contain;
 }

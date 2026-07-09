@@ -78,6 +78,31 @@
     overflow: hidden;
 }
 
+.hero-brand-media {
+    display: block;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto 2rem;
+}
+
+.hero-brand-media--wide {
+    width: 100%;
+    max-width: 840px;
+    border-radius: 8px;
+    background-color: var(--bg-secondary);
+    box-shadow: 0 4px 16px var(--shadow-color);
+}
+
+.hero-brand-media--emblem {
+    width: min(100%, 390px);
+    max-width: 390px;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-secondary);
+    box-shadow: 0 4px 16px var(--shadow-color);
+}
+
 .hero-actions {
     display: flex;
     gap: 1rem;
@@ -95,6 +120,10 @@
 }
 
 @media (max-width: 768px) {
+    .hero-brand-media--emblem {
+        padding: 0.75rem;
+    }
+
     .featured-game {
         grid-template-columns: 1fr;
         text-align: center;
