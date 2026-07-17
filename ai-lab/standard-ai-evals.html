@@ -1,203 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Standard AI Evaluations - Links to industry benchmarks and leaderboards for AI model evaluation.">
-    <meta property="og:title" content="Standard AI Evals | AI Lab | Today We Learn Together">
-    <meta property="og:description" content="Links to industry benchmarks and leaderboards for AI model evaluation.">
-    <meta property="og:type" content="website">
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="A practical directory of standard AI evaluations and model leaderboards.">
+    <!-- SOCIAL-METADATA:START -->
+    <link rel="canonical" href="https://twlt-today-we-learn-together.github.io/mainsite/ai-lab/standard-ai-evals.html">
+    <meta property="og:title" content="Standard AI Evals — TWLT AI Lab">
+    <meta property="og:description" content="A practical directory of standard AI evaluations and model leaderboards.">
+    <meta property="og:type" content="article">
     <meta property="og:url" content="https://twlt-today-we-learn-together.github.io/mainsite/ai-lab/standard-ai-evals.html">
-    <meta property="og:image" content="https://twlt-today-we-learn-together.github.io/mainsite/TWLT_emblem.png">
+    <meta property="og:image" content="https://twlt-today-we-learn-together.github.io/mainsite/assets/share-card.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Today We Learn Together — practical local AI on real consumer hardware">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Standard AI Evals | AI Lab | Today We Learn Together">
-    <meta name="twitter:description" content="Links to industry benchmarks and leaderboards for AI model evaluation.">
-    <meta name="twitter:image" content="https://twlt-today-we-learn-together.github.io/mainsite/TWLT_emblem.png">
-    <link rel="icon" type="image/x-icon" href="../favicon.ico">
-    <title>Standard AI Evals | AI Lab | Today We Learn Together</title>
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/themes.css">
-    <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-    <link rel="stylesheet" href="../css/dropdowns.css">
-    <link rel="stylesheet" href="../css/site.css">
-    <style>
-        .external-links {
-            list-style: none;
-            padding: 0;
-        }
-        .external-links li {
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .external-links a {
-            color: var(--accent-primary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .external-links a:hover {
-            text-decoration: underline;
-        }
-        .external-links .link-desc {
-            display: block;
-            margin-top: 0.25rem;
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
-    </style>
-</head>
-<body>
-        <header>
-        <nav class="navbar">
-            <a href="../index.html" class="logo"><img src="../TWLT_emblem.png" alt="" class="nav-emblem"> Today We Learn Together</a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
+    <meta name="twitter:title" content="Standard AI Evals — TWLT AI Lab">
+    <meta name="twitter:description" content="A practical directory of standard AI evaluations and model leaderboards.">
+    <meta name="twitter:image" content="https://twlt-today-we-learn-together.github.io/mainsite/assets/share-card.webp">
+    <meta name="twitter:image:alt" content="Today We Learn Together — practical local AI on real consumer hardware">
+    <!-- SOCIAL-METADATA:END --><title>Standard AI Evals — TWLT AI Lab</title><link rel="icon" href="../favicon.ico"><link rel="stylesheet" href="../css/site.css"></head><body data-page="lab" data-root=".."><a class="skip-link" href="#main">Skip to content</a><!-- STATIC-SHELL:HEADER:START -->
+    <header class="site-header">
+        <nav class="shell nav" aria-label="Primary navigation">
+            <a class="brand" href="../index.html" aria-label="Today We Learn Together home"><span class="brand-mark" aria-hidden="true">TWLT</span><span>Today We Learn Together</span></a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
                 <span></span><span></span><span></span>
             </button>
-            <ul class="nav-links">
-                <li><a href="../index.html">Home</a></li>
-                <li class="nav-item">
-                    <a>AI Enthusiasts</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="../ai-lab.html">AI Lab</a></li>
-                        <li><a href="../ai-lab/model-comparisons.html">Model Comparisons</a></li>
-                        <li><a href="../ai-lab/local-ai-basics.html">Local AI Basics</a></li>
-                        <li><a href="../ai-lab/standard-ai-evals.html">Standard AI Evals</a></li>
-                        <li><a href="../ai-lab/testing-methodology.html">Testing Methodology</a></li>
-                        <li><a href="../ai-lab/tools.html">Tools</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a>Resources</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="../resources/yt-walkthroughs.html">YT vid walkthroughs</a></li>
-                        <li><a href="../resources/guides.html">Guides w/o vids</a></li>
-                        <li><a href="../resources/downloads.html">Downloads</a></li>
-                    </ul>
-                </li>
-                <li><a href="https://www.youtube.com/@TWLT-LocalAIEdition" target="_blank" rel="noopener">TWLT on Social Media</a></li>
-                <li class="nav-item">
-                    <a>Related Sites</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="https://richard-sees.github.io/mainsite/index.html">Richard Sees</a></li>
-                        <li><a href="https://petalscroll-studios.github.io/mainsite/index.html">PetalScroll Studios (CC's)</a></li>
-                        <li><a href="../other-content-creators.html">Other Content Creators</a></li>
-                    </ul>
-                </li>
-                <li><a href="../contact.html">Contact</a></li>
-            </ul>
-            <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+            <ul class="nav-links" id="site-nav"><li><a href="../index.html">Home</a></li><li><a href="../ai-lab.html" aria-current="page">AI Lab</a></li><li><a href="../ai-lab/model-comparisons.html">Benchmarks</a></li><li><a href="../ai-lab/local-ai-basics.html">Learn</a></li><li><a href="../resources/yt-walkthroughs.html">Resources</a></li><li><a href="../contact.html">Contact</a></li></ul>
         </nav>
     </header>
-
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1>Standard AI Evaluations</h1>
-                <p>Industry benchmarks and leaderboards for AI model evaluation</p>
-            </div>
-        </section>
-
-        <section class="section" style="background-color: var(--bg-secondary);">
-            <div class="container">
-                <p style="max-width: 800px; margin: 0 auto 2rem; text-align: center;">
-                    <strong>Important:</strong> Benchmarks are useful, but they are not a replacement for testing your actual workflow.
-                </p>
-
-                <div class="grid-2">
-                    <div class="card">
-                        <h3>General LLM Benchmarks</h3>
-                        <ul class="external-links">
-                            <li>
-                                <a href="https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard" target="_blank" rel="noopener">HuggingFace Open LLM Leaderboard</a>
-                                <span class="link-desc">Community leaderboard for open models</span>
-                            </li>
-                            <li>
-                                <a href="https://github.com/hendrycks/test" target="_blank" rel="noopener">MMLU</a>
-                                <span class="link-desc">Massive Multitask Language Understanding</span>
-                            </li>
-                            <li>
-                                <a href="https://arxiv.org/abs/2103.03874" target="_blank" rel="noopener">ARC (AI2 Reasoning Challenge)</a>
-                                <span class="link-desc">Science reasoning questions</span>
-                            </li>
-                            <li>
-                                <a href="https://github.com/openai/grade-school-math" target="_blank" rel="noopener">GSM8K</a>
-                                <span class="link-desc">Grade school math problems</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h3>Coding Benchmarks</h3>
-                        <ul class="external-links">
-                            <li>
-                                <a href="https://github.com/openai/human-eval" target="_blank" rel="noopener">HumanEval</a>
-                                <span class="link-desc">Code generation benchmark</span>
-                            </li>
-                            <li>
-                                <a href="https://github.com/google-research/google-research/tree/master/mbpp" target="_blank" rel="noopener">MBPP</a>
-                                <span class="link-desc">Mostly Basic Python Problems</span>
-                            </li>
-                            <li>
-                                <a href="https://www.swebench.com/" target="_blank" rel="noopener">SWE-bench</a>
-                                <span class="link-desc">Real GitHub issue resolution</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="grid-2" style="margin-top: 2rem;">
-                    <div class="card">
-                        <h3>Reasoning</h3>
-                        <ul class="external-links">
-                            <li>
-                                <a href="https://github.com/idavidrein/gpqa" target="_blank" rel="noopener">GPQA</a>
-                                <span class="link-desc">Graduate-level science questions</span>
-                            </li>
-                            <li>
-                                <a href="https://github.com/hendrycks/math" target="_blank" rel="noopener">MATH</a>
-                                <span class="link-desc">Competition mathematics</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h3>Agent & Tool Use</h3>
-                        <ul class="external-links">
-                            <li>
-                                <a href="https://gorilla.cs.berkeley.edu/leaderboard.html" target="_blank" rel="noopener">Berkeley Function Calling Leaderboard</a>
-                                <span class="link-desc">Tool use and function calling</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-        <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <img src="../TWLT_emblem.png" alt="TWLT emblem" class="footer-emblem">
-                    <div class="footer-info">
-                        <h3 class="footer-title">Today We Learn Together</h3>
-                        <p class="footer-description">Local AI benchmarks, tutorials, workflows, and practical experimentation.</p>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <a href="../ai-lab/model-comparisons.html">Model Comparisons</a>
-                    <a href="../ai-lab/local-ai-basics.html">Local AI Basics</a>
-                    <a href="../ai-lab/testing-methodology.html">Testing Methodology</a>
-                    <a href="../resources/guides.html">Guides</a>
-                    <a href="https://github.com/twlt-today-we-learn-together">GitHub</a>
-                    <a href="../contact.html">Contact</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 TWLT. Built for local AI enthusiasts</p>
-            </div>
+    <!-- STATIC-SHELL:HEADER:END --><main id="main">
+<section class="page-hero" data-code="EVAL"><div class="shell reveal"><p class="kicker">External reference points</p><h1 class="display">Standard AI<br><span class="gradient-text">evaluations.</span></h1><p class="lede">Industry benchmarks and leaderboards worth knowing—used as context, not a substitute for testing your actual workflow.</p></div></section>
+<section class="section"><div class="shell"><div class="notice reveal" style="margin-bottom:2rem"><span>!</span><div><strong>Benchmarks are clues, not verdicts.</strong> A high score does not tell you whether a model fits your memory, speed, prompting style, or daily tasks.</div></div><div class="eval-groups">
+<article class="eval-group reveal"><h2>General LLM benchmarks</h2><ul class="link-list"><li><a href="https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard" target="_blank" rel="noopener"><strong>Hugging Face Open LLM Leaderboard ↗</strong><span>Community leaderboard for open models</span></a></li><li><a href="https://github.com/hendrycks/test" target="_blank" rel="noopener"><strong>MMLU ↗</strong><span>Massive Multitask Language Understanding</span></a></li><li><a href="https://arxiv.org/abs/2103.03874" target="_blank" rel="noopener"><strong>ARC ↗</strong><span>AI2 Reasoning Challenge science questions</span></a></li><li><a href="https://github.com/openai/grade-school-math" target="_blank" rel="noopener"><strong>GSM8K ↗</strong><span>Grade-school math word problems</span></a></li></ul></article>
+<article class="eval-group reveal"><h2>Coding benchmarks</h2><ul class="link-list"><li><a href="https://github.com/openai/human-eval" target="_blank" rel="noopener"><strong>HumanEval ↗</strong><span>Code-generation benchmark</span></a></li><li><a href="https://github.com/google-research/google-research/tree/master/mbpp" target="_blank" rel="noopener"><strong>MBPP ↗</strong><span>Mostly Basic Python Problems</span></a></li><li><a href="https://www.swebench.com/" target="_blank" rel="noopener"><strong>SWE-bench ↗</strong><span>Resolution of real GitHub issues</span></a></li></ul></article>
+<article class="eval-group reveal"><h2>Reasoning</h2><ul class="link-list"><li><a href="https://github.com/idavidrein/gpqa" target="_blank" rel="noopener"><strong>GPQA ↗</strong><span>Graduate-level science questions</span></a></li><li><a href="https://github.com/hendrycks/math" target="_blank" rel="noopener"><strong>MATH ↗</strong><span>Competition mathematics</span></a></li></ul></article>
+<article class="eval-group reveal"><h2>Agents and tool use</h2><ul class="link-list"><li><a href="https://gorilla.cs.berkeley.edu/leaderboard.html" target="_blank" rel="noopener"><strong>Berkeley Function Calling Leaderboard ↗</strong><span>Tool use and structured function calling</span></a></li></ul></article>
+</div></div></section></main><!-- STATIC-SHELL:FOOTER:START -->
+    <footer class="site-footer">
+        <div class="shell footer-grid">
+            <div><div class="footer-brand">Today We Learn Together</div><p class="footer-copy">Local-first · practical · transparent about limits · © 2026</p></div>
+            <div class="footer-links"><a href="../ai-lab/model-comparisons.html">Model comparisons</a><a href="../ai-lab/testing-methodology.html">Methodology</a><a href="../ai-lab/tools.html">Tools</a><a href="https://github.com/twlt-today-we-learn-together" target="_blank" rel="noopener">GitHub</a><a href="https://www.youtube.com/@TWLT-LocalAIEdition" target="_blank" rel="noopener">YouTube</a><a href="https://richard-sees.github.io/mainsite/" target="_blank" rel="noopener">Richard Sees</a><a href="https://petalscroll-studios.github.io/mainsite/" target="_blank" rel="noopener">PetalScroll</a></div>
         </div>
     </footer>
-
-    <script src="../js/theme.js"></script>
-    <script src="../js/nav.js"></script>
-</body>
-</html>
+    <!-- STATIC-SHELL:FOOTER:END --><script src="../js/site.js"></script></body></html>

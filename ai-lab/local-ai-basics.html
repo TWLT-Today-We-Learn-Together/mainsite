@@ -1,260 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Local AI Basics - Plain-language definitions for common local AI and model comparison terms.">
-    <meta property="og:title" content="Local AI Basics | AI Lab | Today We Learn Together">
-    <meta property="og:description" content="Plain-language definitions for local AI, tokens, context windows, quantization, VRAM, evals, and more.">
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Plain-language local AI definitions from models and tokens to VRAM and agents.">
+    <!-- SOCIAL-METADATA:START -->
+    <link rel="canonical" href="https://twlt-today-we-learn-together.github.io/mainsite/ai-lab/local-ai-basics.html">
+    <meta property="og:title" content="Local AI Basics — TWLT AI Lab">
+    <meta property="og:description" content="Plain-language local AI definitions from models and tokens to VRAM and agents.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://twlt-today-we-learn-together.github.io/mainsite/ai-lab/local-ai-basics.html">
-    <meta property="og:image" content="https://twlt-today-we-learn-together.github.io/mainsite/TWLT_emblem.png">
+    <meta property="og:image" content="https://twlt-today-we-learn-together.github.io/mainsite/assets/share-card.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Today We Learn Together — practical local AI on real consumer hardware">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Local AI Basics | AI Lab | Today We Learn Together">
-    <meta name="twitter:description" content="Plain-language definitions for common local AI and model comparison terms.">
-    <meta name="twitter:image" content="https://twlt-today-we-learn-together.github.io/mainsite/TWLT_emblem.png">
-    <link rel="icon" type="image/x-icon" href="../favicon.ico">
-    <title>Local AI Basics | AI Lab | Today We Learn Together</title>
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/themes.css">
-    <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-    <link rel="stylesheet" href="../css/dropdowns.css">
-    <link rel="stylesheet" href="../css/site.css">
-    <style>
-        .basics-intro {
-            max-width: 850px;
-            margin: 0 auto 2rem;
-            text-align: center;
-        }
-
-        .term-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-        }
-
-        .term-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1rem 1.25rem;
-        }
-
-        .term-card summary {
-            cursor: pointer;
-            font-weight: 700;
-            color: var(--accent-primary);
-        }
-
-        .term-card summary:focus {
-            outline: 2px solid var(--accent-primary);
-            outline-offset: 4px;
-        }
-
-        .term-card p {
-            margin-top: 0.75rem;
-            margin-bottom: 0;
-        }
-
-        .reading-path {
-            max-width: 850px;
-            margin: 2rem auto 0;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <nav class="navbar">
-            <a href="../index.html" class="logo"><img src="../TWLT_emblem.png" alt="" class="nav-emblem"> Today We Learn Together</a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
+    <meta name="twitter:title" content="Local AI Basics — TWLT AI Lab">
+    <meta name="twitter:description" content="Plain-language local AI definitions from models and tokens to VRAM and agents.">
+    <meta name="twitter:image" content="https://twlt-today-we-learn-together.github.io/mainsite/assets/share-card.webp">
+    <meta name="twitter:image:alt" content="Today We Learn Together — practical local AI on real consumer hardware">
+    <!-- SOCIAL-METADATA:END --><title>Local AI Basics — TWLT AI Lab</title><link rel="icon" href="../favicon.ico"><link rel="stylesheet" href="../css/site.css"></head><body data-page="learn" data-root=".."><a class="skip-link" href="#main">Skip to content</a><!-- STATIC-SHELL:HEADER:START -->
+    <header class="site-header">
+        <nav class="shell nav" aria-label="Primary navigation">
+            <a class="brand" href="../index.html" aria-label="Today We Learn Together home"><span class="brand-mark" aria-hidden="true">TWLT</span><span>Today We Learn Together</span></a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
                 <span></span><span></span><span></span>
             </button>
-            <ul class="nav-links">
-                <li><a href="../index.html">Home</a></li>
-                <li class="nav-item">
-                    <a>AI Enthusiasts</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="../ai-lab.html">AI Lab</a></li>
-                        <li><a href="../ai-lab/model-comparisons.html">Model Comparisons</a></li>
-                        <li><a href="../ai-lab/local-ai-basics.html">Local AI Basics</a></li>
-                        <li><a href="../ai-lab/standard-ai-evals.html">Standard AI Evals</a></li>
-                        <li><a href="../ai-lab/testing-methodology.html">Testing Methodology</a></li>
-                        <li><a href="../ai-lab/tools.html">Tools</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a>Resources</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="../resources/yt-walkthroughs.html">YT vid walkthroughs</a></li>
-                        <li><a href="../resources/guides.html">Guides w/o vids</a></li>
-                        <li><a href="../resources/downloads.html">Downloads</a></li>
-                    </ul>
-                </li>
-                <li><a href="https://www.youtube.com/@TWLT-LocalAIEdition" target="_blank" rel="noopener">TWLT on Social Media</a></li>
-                <li class="nav-item">
-                    <a>Related Sites</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="https://richard-sees.github.io/mainsite/index.html">Richard Sees</a></li>
-                        <li><a href="https://petalscroll-studios.github.io/mainsite/index.html">PetalScroll Studios (CC's)</a></li>
-                        <li><a href="../other-content-creators.html">Other Content Creators</a></li>
-                    </ul>
-                </li>
-                <li><a href="../contact.html">Contact</a></li>
-            </ul>
-            <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+            <ul class="nav-links" id="site-nav"><li><a href="../index.html">Home</a></li><li><a href="../ai-lab.html">AI Lab</a></li><li><a href="../ai-lab/model-comparisons.html">Benchmarks</a></li><li><a href="../ai-lab/local-ai-basics.html" aria-current="page">Learn</a></li><li><a href="../resources/yt-walkthroughs.html">Resources</a></li><li><a href="../contact.html">Contact</a></li></ul>
         </nav>
     </header>
-
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1>Local AI Basics</h1>
-                <p>Plain-language definitions for reading the model comparison tables</p>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container">
-                <div class="basics-intro">
-                    <p>
-                        These definitions are written for people who are new to local AI. They are meant to explain the terms used around benchmarks, model tables, and tool workflows without requiring a machine learning background.
-                    </p>
-                </div>
-
-                <div class="term-grid">
-                    <details class="term-card" open>
-                        <summary>Local AI</summary>
-                        <p>AI models running on your own computer instead of a company's remote server. The tradeoff is more privacy and control, but your hardware limits speed, memory, and model size.</p>
-                    </details>
-
-                    <details class="term-card">
-                        <summary>Cloud AI</summary>
-                        <p>AI services running on provider hardware, usually through a website or API. These can be very powerful, but your prompts and files may leave your machine depending on the service and settings.</p>
-                    </details>
-
-                    <details class="term-card">
-                        <summary>Model</summary>
-                        <p>The AI system that reads your input and generates an output. In local AI, a model is often a downloadable file or group of files loaded by tools like LM Studio or Ollama.</p>
-                    </details>
-
-                    <details class="term-card">
-                        <summary>Parameters</summary>
-                        <p>The learned internal values of a model. Parameter count is often shown as 3B, 7B, 13B, and so on. Bigger models can be more capable, but they usually need more memory and run slower.</p>
-                    </details>
-
-                    <details class="term-card">
-                        <summary>Tokens</summary>
-                        <p>The chunks of text a model reads and writes. A token can be a whole word, part of a word, punctuation, or spacing. Token counts matter because context windows and pricing are usually token-based.</p>
-                    </details>
-
-                    <details class="term-card">
-                        <summary>Context Window</summary>
-                        <p>The amount of text the model can consider at once, including your prompt, conversation history, files, and its own reply. Larger context helps with long tasks but often uses more memory.</p>
-                    </details>
-
-                    <details class="term-card">
-                        <summary>Quantization</summary>
-                        <p>A compression method that makes a model smaller and easier to run locally. Lower quantization can save memory, but may reduce quality or make the model less stable.</p>
-                    </details>
-
-                    <details class="term-card">
-                        <summary>GGUF</summary>
-                        <p>A common file format for running quantized local models with llama.cpp-based tools. If a model table lists GGUF, it usually means the model is packaged for local desktop use.</p>
-                    </details>
-
-                    <details class="term-card">
-                        <summary>VRAM</summary>
-                        <p>Memory on your graphics card. For local AI, VRAM is often the tightest limit because loading more of the model onto the GPU usually makes generation faster.</p>
-                    </details>
-
-                    <details class="term-card">
-                        <summary>RAM</summary>
-                        <p>Your system memory. If a model does not fully fit in VRAM, some work may fall back to RAM and CPU, which can be much slower.</p>
-                    </details>
-
-                    <details class="term-card">
-                        <summary>Inference</summary>
-                        <p>The act of using a trained model to generate an answer. When you ask a model a question and it replies, that reply is produced through inference.</p>
-                    </details>
-
-                    <details class="term-card">
-                        <summary>Benchmark</summary>
-                        <p>A repeatable test used to compare models. Benchmarks are useful for spotting patterns, but they do not replace trying a model on your actual work.</p>
-                    </details>
-
-                    <details class="term-card">
-                        <summary>Eval</summary>
-                        <p>Short for evaluation. An eval may be a formal benchmark, a custom test set, or a practical workflow check designed to measure a model's behavior.</p>
-                    </details>
-
-                    <details class="term-card">
-                        <summary>Hallucination</summary>
-                        <p>When a model confidently produces information that is wrong, unsupported, or made up. This is why important answers should be checked against reliable sources.</p>
-                    </details>
-
-                    <details class="term-card">
-                        <summary>Tool Calling</summary>
-                        <p>When a model can ask software tools to do specific work, such as searching files, calling an API, running a calculation, or using a function provided by an app.</p>
-                    </details>
-
-                    <details class="term-card">
-                        <summary>Agent</summary>
-                        <p>An AI workflow that can take multiple steps, use tools, inspect results, and continue toward a goal. Coding assistants are a common example of agent-style systems.</p>
-                    </details>
-
-                    <details class="term-card">
-                        <summary>Reasoning Model</summary>
-                        <p>A model designed or tuned to spend more effort on multi-step problems. These can be better at planning, math, coding, and analysis, but may be slower.</p>
-                    </details>
-
-                    <details class="term-card">
-                        <summary>Multimodal</summary>
-                        <p>A model that can work with more than text, such as images, audio, video, or files. For example, a multimodal model may inspect a screenshot and explain what it sees.</p>
-                    </details>
-
-                    <details class="term-card">
-                        <summary>Open Weights</summary>
-                        <p>A model whose trained weight files are available to download. Open weights are not always the same as open source, because the license may still restrict some uses.</p>
-                    </details>
-                </div>
-
-                <div class="reading-path card">
-                    <h2>Where to Go Next</h2>
-                    <p>After these basics, compare models in the live table, then read how the tests are performed.</p>
-                    <a href="model-comparisons.html" class="btn btn-primary">View Model Comparisons</a>
-                    <a href="testing-methodology.html" class="btn btn-secondary" style="margin-left: 0.75rem;">Testing Methodology</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
+    <!-- STATIC-SHELL:HEADER:END --><main id="main"><section class="page-hero compact-hero" data-code="101"><div class="shell reveal"><p class="kicker">No ML degree required</p><h1 class="display">Local AI, <span class="gradient-text">plainly.</span></h1><p class="lede">A practical glossary for reading model tables and trying local tools, with no prior machine-learning knowledge assumed.</p><nav class="jump-nav" aria-label="On this page"><a href="#terms">Browse the glossary</a><a href="#next">Where to go next</a></nav></div></section><section class="section" id="terms"><div class="shell"><div class="term-grid">
+<details class="term-card reveal" open><summary>Local AI</summary><p>Models running on your own computer instead of a company’s remote server. You gain privacy and control, while your hardware limits speed, memory, and model size.</p></details><details class="term-card reveal"><summary>Cloud AI</summary><p>AI services running on provider hardware through a website or API. These can be powerful, but prompts and files may leave your machine depending on the service and settings.</p></details><details class="term-card reveal"><summary>Model</summary><p>The AI system that reads your input and generates an output. Locally, it is often a downloadable file loaded by tools such as LM Studio or llama.cpp.</p></details><details class="term-card reveal"><summary>Parameters</summary><p>Learned internal values, often shown as 3B, 7B, or 13B. Bigger models can be more capable, but generally require more memory and run slower.</p></details><details class="term-card reveal"><summary>Model architecture</summary><p>The underlying design of a model—how its parts are arranged and how it processes information. Two models of the same size may behave differently because their architectures and training differ.</p></details><details class="term-card reveal"><summary>Tokens</summary><p>Chunks of text a model reads and writes: whole words, word fragments, punctuation, or spacing. Context limits and pricing are commonly token-based.</p></details><details class="term-card reveal"><summary>Context window</summary><p>How much text the model can consider at once, including prompts, history, files, and its reply. Larger context often needs more memory.</p></details><details class="term-card reveal"><summary>Quantization</summary><p>Compression that makes a model smaller and easier to run. Aggressive quantization saves memory but can reduce quality or stability.</p></details><details class="term-card reveal"><summary>GGUF</summary><p>A common file format for quantized models used by llama.cpp-based tools and many local desktop workflows.</p></details><details class="term-card reveal"><summary>VRAM</summary><p>Memory on the graphics card. It is often the tightest local-AI limit; loading more of the model onto the GPU usually improves speed.</p></details><details class="term-card reveal"><summary>RAM</summary><p>System memory. Models that do not fit in VRAM can use RAM and CPU, but usually run much slower.</p></details><details class="term-card reveal"><summary>Inference</summary><p>Using a trained model to generate an answer. Every response produced by a loaded model is inference.</p></details><details class="term-card reveal"><summary>Inference server</summary><p>Software that loads a model and makes it available to other programs, usually through a local web address or API. It is the bridge between the model file and an app or coding tool.</p></details><details class="term-card reveal"><summary>Prompt template</summary><p>The formatting a model expects around instructions, messages, and tool results. A mismatched template can make a capable model answer poorly or ignore tools.</p></details><details class="term-card reveal"><summary>Benchmark</summary><p>A repeatable test for comparing models. Benchmarks reveal patterns but do not replace testing your own work.</p></details><details class="term-card reveal"><summary>Eval</summary><p>Short for evaluation: a formal benchmark, custom test set, or workflow check designed to measure model behavior.</p></details><details class="term-card reveal"><summary>Hallucination</summary><p>When a model confidently produces wrong, unsupported, or invented information. Important outputs should be checked against reliable sources.</p></details><details class="term-card reveal"><summary>Tool calling</summary><p>When a model can ask software tools to search files, call an API, calculate something, or run a function.</p></details><details class="term-card reveal"><summary>Agent</summary><p>An AI workflow that takes multiple steps, uses tools, inspects results, and continues toward a goal. Coding assistants often work this way.</p></details><details class="term-card reveal"><summary>Reasoning model</summary><p>A model designed or tuned to spend more effort on multi-step problems. It may improve planning, math, or code, but can run slower.</p></details><details class="term-card reveal"><summary>Multimodal</summary><p>A model that works with more than text, such as images, audio, video, or files.</p></details><details class="term-card reveal"><summary>Open weights</summary><p>A model whose trained weight files can be downloaded. This is not always the same as open source because licenses may still restrict use.</p></details>
+</div><div class="notice reveal" id="next" style="margin-top:2rem"><span>→</span><div><strong>Ready for the numbers?</strong> Continue to <a href="model-comparisons.html">model comparisons</a>, then see exactly how they are evaluated in the <a href="testing-methodology.html">testing methodology</a>.</div></div></div></section></main><!-- STATIC-SHELL:FOOTER:START -->
     <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <img src="../TWLT_emblem.png" alt="TWLT emblem" class="footer-emblem">
-                    <div class="footer-info">
-                        <h3 class="footer-title">Today We Learn Together</h3>
-                        <p class="footer-description">Local AI benchmarks, tutorials, workflows, and practical experimentation.</p>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <a href="../ai-lab/model-comparisons.html">Model Comparisons</a>
-                    <a href="../ai-lab/local-ai-basics.html">Local AI Basics</a>
-                    <a href="../ai-lab/testing-methodology.html">Testing Methodology</a>
-                    <a href="../resources/guides.html">Guides</a>
-                    <a href="https://github.com/twlt-today-we-learn-together">GitHub</a>
-                    <a href="../contact.html">Contact</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 TWLT. Built for local AI enthusiasts</p>
-            </div>
+        <div class="shell footer-grid">
+            <div><div class="footer-brand">Today We Learn Together</div><p class="footer-copy">Local-first · practical · transparent about limits · © 2026</p></div>
+            <div class="footer-links"><a href="../ai-lab/model-comparisons.html">Model comparisons</a><a href="../ai-lab/testing-methodology.html">Methodology</a><a href="../ai-lab/tools.html">Tools</a><a href="https://github.com/twlt-today-we-learn-together" target="_blank" rel="noopener">GitHub</a><a href="https://www.youtube.com/@TWLT-LocalAIEdition" target="_blank" rel="noopener">YouTube</a><a href="https://richard-sees.github.io/mainsite/" target="_blank" rel="noopener">Richard Sees</a><a href="https://petalscroll-studios.github.io/mainsite/" target="_blank" rel="noopener">PetalScroll</a></div>
         </div>
     </footer>
-
-    <script src="../js/theme.js"></script>
-    <script src="../js/nav.js"></script>
-</body>
-</html>
+    <!-- STATIC-SHELL:FOOTER:END --><script src="../js/site.js"></script></body></html>

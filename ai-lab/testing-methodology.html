@@ -1,239 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Testing Methodology - How I test AI models before adding them to my workflow.">
-    <meta property="og:title" content="Testing Methodology | AI Lab | Today We Learn Together">
-    <meta property="og:description" content="How I test AI models before adding them to my workflow.">
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="How TWLT evaluates local AI models for conversation, coding, agents, and hardware fit.">
+    <!-- SOCIAL-METADATA:START -->
+    <link rel="canonical" href="https://twlt-today-we-learn-together.github.io/mainsite/ai-lab/testing-methodology.html">
+    <meta property="og:title" content="Testing Methodology — TWLT AI Lab">
+    <meta property="og:description" content="How TWLT evaluates local AI models for conversation, coding, agents, and hardware fit.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://twlt-today-we-learn-together.github.io/mainsite/ai-lab/testing-methodology.html">
-    <meta property="og:image" content="https://twlt-today-we-learn-together.github.io/mainsite/TWLT_emblem.png">
+    <meta property="og:image" content="https://twlt-today-we-learn-together.github.io/mainsite/assets/share-card.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Today We Learn Together — practical local AI on real consumer hardware">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Testing Methodology | AI Lab | Today We Learn Together">
-    <meta name="twitter:description" content="How I test AI models before adding them to my workflow.">
-    <meta name="twitter:image" content="https://twlt-today-we-learn-together.github.io/mainsite/TWLT_emblem.png">
-    <link rel="icon" type="image/x-icon" href="../favicon.ico">
-    <title>Testing Methodology | AI Lab | Today We Learn Together</title>
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/themes.css">
-    <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-    <link rel="stylesheet" href="../css/dropdowns.css">
-    <link rel="stylesheet" href="../css/site.css">
-    <style>
-        .methodology-step {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: var(--bg-secondary);
-            border-radius: 8px;
-            border-left: 4px solid var(--accent-primary);
-        }
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: var(--accent-primary);
-            color: var(--bg-primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-        .step-content {
-            flex: 1;
-        }
-        .step-content h3 {
-            margin-bottom: 0.5rem;
-        }
-        .test-example {
-            background: var(--bg-primary);
-            padding: 1rem;
-            border-radius: 4px;
-            margin-top: 1rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            border: 1px solid var(--border-color);
-        }
-    </style>
-</head>
-<body>
-        <header>
-        <nav class="navbar">
-            <a href="../index.html" class="logo"><img src="../TWLT_emblem.png" alt="" class="nav-emblem"> Today We Learn Together</a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
+    <meta name="twitter:title" content="Testing Methodology — TWLT AI Lab">
+    <meta name="twitter:description" content="How TWLT evaluates local AI models for conversation, coding, agents, and hardware fit.">
+    <meta name="twitter:image" content="https://twlt-today-we-learn-together.github.io/mainsite/assets/share-card.webp">
+    <meta name="twitter:image:alt" content="Today We Learn Together — practical local AI on real consumer hardware">
+    <!-- SOCIAL-METADATA:END --><title>Testing Methodology — TWLT AI Lab</title><link rel="icon" href="../favicon.ico"><link rel="stylesheet" href="../css/site.css"></head><body data-page="lab" data-root=".."><a class="skip-link" href="#main">Skip to content</a><!-- STATIC-SHELL:HEADER:START -->
+    <header class="site-header">
+        <nav class="shell nav" aria-label="Primary navigation">
+            <a class="brand" href="../index.html" aria-label="Today We Learn Together home"><span class="brand-mark" aria-hidden="true">TWLT</span><span>Today We Learn Together</span></a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
                 <span></span><span></span><span></span>
             </button>
-            <ul class="nav-links">
-                <li><a href="../index.html">Home</a></li>
-                <li class="nav-item">
-                    <a>AI Enthusiasts</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="../ai-lab.html">AI Lab</a></li>
-                        <li><a href="../ai-lab/model-comparisons.html">Model Comparisons</a></li>
-                        <li><a href="../ai-lab/local-ai-basics.html">Local AI Basics</a></li>
-                        <li><a href="../ai-lab/standard-ai-evals.html">Standard AI Evals</a></li>
-                        <li><a href="../ai-lab/testing-methodology.html">Testing Methodology</a></li>
-                        <li><a href="../ai-lab/tools.html">Tools</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a>Resources</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="../resources/yt-walkthroughs.html">YT vid walkthroughs</a></li>
-                        <li><a href="../resources/guides.html">Guides w/o vids</a></li>
-                        <li><a href="../resources/downloads.html">Downloads</a></li>
-                    </ul>
-                </li>
-                <li><a href="https://www.youtube.com/@TWLT-LocalAIEdition" target="_blank" rel="noopener">TWLT on Social Media</a></li>
-                <li class="nav-item">
-                    <a>Related Sites</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="https://richard-sees.github.io/mainsite/index.html">Richard Sees</a></li>
-                        <li><a href="https://petalscroll-studios.github.io/mainsite/index.html">PetalScroll Studios (CC's)</a></li>
-                        <li><a href="../other-content-creators.html">Other Content Creators</a></li>
-                    </ul>
-                </li>
-                <li><a href="../contact.html">Contact</a></li>
-            </ul>
-            <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+            <ul class="nav-links" id="site-nav"><li><a href="../index.html">Home</a></li><li><a href="../ai-lab.html" aria-current="page">AI Lab</a></li><li><a href="../ai-lab/model-comparisons.html">Benchmarks</a></li><li><a href="../ai-lab/local-ai-basics.html">Learn</a></li><li><a href="../resources/yt-walkthroughs.html">Resources</a></li><li><a href="../contact.html">Contact</a></li></ul>
         </nav>
     </header>
+    <!-- STATIC-SHELL:HEADER:END --><main id="main">
+<section class="page-hero" data-code="TEST"><div class="shell reveal"><p class="kicker">Repeatable, practical, honest</p><h1 class="display">Testing<br><span class="gradient-text">methodology.</span></h1><p class="lede">How a model earns—or loses—a place in a real workflow on real hardware.</p></div></section>
+<section class="section"><div class="shell"><div class="notice reveal" style="margin-bottom:2rem"><span>◎</span><div><strong>The core rule:</strong> benchmark scores are not enough. Tests use actual tasks, actual tools, and the hardware available at the desk. New to the vocabulary? Start with <a href="local-ai-basics.html">Local AI Basics</a>.</div></div><div class="method-list">
+<article class="method-step reveal"><div><h2>General conversation</h2><p>Can it follow instructions, preserve context, explain clearly, and help without filling the answer with noise?</p><pre class="prompt-example">Write a detailed explanation of how a space shuttle is able to take off, orbit, then return to Earth.
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1>Testing Methodology</h1>
-                <p>How I test AI models before deciding whether they belong in my workflow</p>
-            </div>
-        </section>
+• Use approximately 1000 words.
+• Use headings and bullet points.</pre><ul class="check-list"><li>Summarize a long document</li><li>Explain a concept simply</li><li>Follow formatting constraints</li><li>Reason through a problem</li></ul></div></article>
+<article class="method-step reveal"><div><h2>Coding ability</h2><p>Can it understand an existing project, modify code safely, diagnose an error, and match the project’s existing style?</p><pre class="prompt-example">Create a Roblox Lua server script that randomly spawns 25 trees in a 200×200 area.
 
-        <section class="section">
-            <div class="container" style="max-width: 900px;">
-                <h2 class="section-title">My Testing Philosophy</h2>
-                <p style="margin-bottom: 2rem; text-align: center;">
-                    I don't only care about benchmark scores. I test for real-world usefulness on my actual hardware with my actual tasks. If you are new to the table terms, start with <a href="local-ai-basics.html">Local AI Basics</a>.
-                </p>
-
-                <div class="methodology-step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>General Conversation</h3>
-                        <p>Can it follow instructions? Does it understand context? Is it helpful without being verbose?</p>
-                        <div class="test-example">
-                            <strong>My RL Test Example</strong><br><br>
-                            "Write a detailed explanation of how a space shuttle is able to take off, orbit, then return to Earth.<br>
-                            * Use approximately 1000 words.<br>
-                            * Use headings and bullet points."
-                        </div>
-                        <ul style="margin-top: 1rem;">
-                            <li>Summarize a long document</li>
-                            <li>Explain a concept simply</li>
-                            <li>Reason through a problem step by step</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="methodology-step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Coding Ability</h3>
-                        <p>Can it understand an existing project? Modify code safely? Debug errors? Maintain style?</p>
-                        <div class="test-example">
-                            <strong>My RL Test Example</strong><br><br>
-                            "Create a Roblox Lua server script that randomly spawns trees around a map.<br>
-                            Requirements:<br>
-                            * The script runs from ServerScriptService<br>
-                            * It uses a tree Model stored in ReplicatedStorage called \"Tree\"<br>
-                            * If a folder named \"GeneratedFlora\" does not exist in Workspace, the script should create it<br>
-                            * Spawn 25 trees<br>
-                            * Place them randomly within a 200x200 area<br>
-                            * Use raycasting so trees sit on the ground instead of floating<br>
-                            * Give each tree a random rotation and small random scale variation<br>
-                            * Add comments explaining the important parts<br>
-                            * Return only the script. Do not explain how to set it up."
-                        </div>
-                        <ul style="margin-top: 1rem;">
-                            <li>Read a codebase and answer questions about it</li>
-                            <li>Add a feature to existing code</li>
-                            <li>Fix a bug without breaking other things</li>
-                            <li>Match the existing code style</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="methodology-step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Agent Behavior</h3>
-                        <p>Can it use tools? Create files? Follow multi-step instructions?</p>
-                        <div class="test-example">
-                            <strong>My RL Test Example</strong><br><br>
-                            "Create a new file called utils.js with a function that formats dates. Then update index.html to use it."
-                        </div>
-                        <ul style="margin-top: 1rem;">
-                            <li>Use file read/write tools correctly</li>
-                            <li>Execute commands safely</li>
-                            <li>Follow a multi-step plan without losing track</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="methodology-step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Hardware Reality</h3>
-                        <p>A benchmark saying a model is "excellent" does not matter if it doesn't fit VRAM, is too slow, or context destroys performance.</p>
-                        <div class="test-example">
-                            <strong>Reality check:</strong> "I tested this model with a 16K context window. It worked at 2K, was slow at 8K, and produced garbage at 16K."
-                        </div>
-                        <ul style="margin-top: 1rem;">
-                            <li>Does it fit in 4GB VRAM?</li>
-                            <li>Is it fast enough for interactive use?</li>
-                            <li>How does it handle long contexts?</li>
-                            <li>Does it crash or produce garbage at scale?</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="card" style="margin-top: 2rem;">
-                    <h3>The Bottom Line</h3>
-                    <p>A company testing a $100k enterprise AI deployment and me testing a 4GB VRAM laptop are doing similar things at different scales. The methodology is the same: test with real tasks, measure real performance, document what actually happens.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-        <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <img src="../TWLT_emblem.png" alt="TWLT emblem" class="footer-emblem">
-                    <div class="footer-info">
-                        <h3 class="footer-title">Today We Learn Together</h3>
-                        <p class="footer-description">Local AI benchmarks, tutorials, workflows, and practical experimentation.</p>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <a href="../ai-lab/model-comparisons.html">Model Comparisons</a>
-                    <a href="../ai-lab/local-ai-basics.html">Local AI Basics</a>
-                    <a href="../ai-lab/testing-methodology.html">Testing Methodology</a>
-                    <a href="../resources/guides.html">Guides</a>
-                    <a href="https://github.com/twlt-today-we-learn-together">GitHub</a>
-                    <a href="../contact.html">Contact</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 TWLT. Built for local AI enthusiasts</p>
-            </div>
+Use a Tree model from ReplicatedStorage, create GeneratedFlora when missing, raycast to the ground, and vary rotation and scale. Return only the commented script.</pre><ul class="check-list"><li>Read a codebase</li><li>Add a feature safely</li><li>Fix without regressions</li><li>Maintain local style</li></ul></div></article>
+<article class="method-step reveal"><div><h2>Agent behavior</h2><p>Can it use tools, create and update files, inspect its own result, and finish a multi-step instruction without losing the thread?</p><pre class="prompt-example">Create utils.js with a date-formatting function. Then update index.html to use it.</pre><ul class="check-list"><li>Use tools correctly</li><li>Sequence dependent steps</li><li>React to command output</li><li>Stop when complete</li></ul></div></article>
+<article class="method-step reveal"><div><h2>Hardware reality</h2><p>A model is not useful locally if it does not fit, runs too slowly, collapses at the desired context length, or becomes unstable under load.</p><pre class="prompt-example">Reality check: the model worked at 2K context, slowed at 8K, and produced unusable output at 16K.</pre><ul class="check-list"><li>Fit inside 4GB VRAM</li><li>Remain interactive</li><li>Handle useful context</li><li>Recover without crashes</li></ul></div></article>
+</div></div></section>
+<section class="section"><div class="shell reveal"><p class="kicker">The bottom line</p><blockquote class="quote">Test with <em>real tasks.</em> Measure real performance. Document what actually happens.</blockquote></div></section>
+</main><!-- STATIC-SHELL:FOOTER:START -->
+    <footer class="site-footer">
+        <div class="shell footer-grid">
+            <div><div class="footer-brand">Today We Learn Together</div><p class="footer-copy">Local-first · practical · transparent about limits · © 2026</p></div>
+            <div class="footer-links"><a href="../ai-lab/model-comparisons.html">Model comparisons</a><a href="../ai-lab/testing-methodology.html">Methodology</a><a href="../ai-lab/tools.html">Tools</a><a href="https://github.com/twlt-today-we-learn-together" target="_blank" rel="noopener">GitHub</a><a href="https://www.youtube.com/@TWLT-LocalAIEdition" target="_blank" rel="noopener">YouTube</a><a href="https://richard-sees.github.io/mainsite/" target="_blank" rel="noopener">Richard Sees</a><a href="https://petalscroll-studios.github.io/mainsite/" target="_blank" rel="noopener">PetalScroll</a></div>
         </div>
     </footer>
-
-    <script src="../js/theme.js"></script>
-    <script src="../js/nav.js"></script>
-</body>
-</html>
+    <!-- STATIC-SHELL:FOOTER:END --><script src="../js/site.js"></script></body></html>
